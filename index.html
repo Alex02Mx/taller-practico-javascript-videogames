@@ -11,21 +11,26 @@
     <body>
 
         <div class="game-container">
+
+            <div class="messages">
+                <p class="vid msg">Lives <span id="lives"></span></p>
+                <p class="tie msg">Time 🕗<span id="time"></span></p>
+                <p class="rec msg">Record 🏁<span id="record"></span></p>
+            </div>
+
             <canvas id="game"></canvas>
 
             <div class="btns">
-                <button class="up">Arriba</button>
-                <button class="left">Izquierda</button>
-                <button class="right">Derecha</button>
-                <button class="down">Abajo</button>
+                <button class="up">UP</button>
+                <button class="left">LEFT</button>
+                <button class="right">RIGHT</button>
+                <button class="down">DOWN</button>
             </div>
 
-            <div class="messages">
-                <p>Vidas: <span id="lives"></span></p>
-                <p>Tiempo: 🕗<span id="time"></span></p>
-                <p>Record: <span id="record"></span></p>
-                <p id="result"></p>
+            <div class="result_text">
+                <p class="res" id="result"></p>
             </div>
+            
         </div>
         
         <script src="./maps.js"></script>

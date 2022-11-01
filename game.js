@@ -154,16 +154,17 @@ function start_game () {
 
 function set_canvas_size () {
     if (window.innerWidth > window.innerHeight) {
-        canvas_size = parseInt(window.innerHeight * 0.8);
+        canvas_size = parseInt(window.innerHeight * 0.9);
     }
     else if (window.innerHeight > window.innerWidth) {
-        canvas_size = parseInt(window.innerWidth * 0.8);
+        canvas_size = parseInt(window.innerWidth * 0.9);
     }
     canvas.setAttribute("width",canvas_size);
     canvas.setAttribute("height",canvas_size);
 
     element_size = parseInt(canvas_size / 10.3);
-    
+    player_position.x = 0;
+    player_position.y = 0;
     start_game();
 }
 

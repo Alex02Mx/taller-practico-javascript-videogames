@@ -52,7 +52,7 @@ button {
 }
 
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
     .messages {
         display: grid;
         grid-template-columns: 30% 35% 35%;

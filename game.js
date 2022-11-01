@@ -6,6 +6,8 @@ window.addEventListener("resize", set_canvas_size);
 
 const lives_player = document.getElementById("lives");
 const time_span = document.getElementById("time");
+const record_span = document.getElementById("record");
+const p_result = document.getElementById("result");
 
 let canvas_size;
 let element_size;
@@ -105,9 +107,11 @@ function start_game () {
     }
     if (!time_start) {
         time_start = Date.now();
-        time_interval = setInterval(show_time, 50);
+        time_interval = setInterval(show_time, 100);
     }
     show_lives ();
+    show_record ();
+    
     const map_row = map.trim().split("\n")
     const map_row_col = map_row.map(row => row.trim().split(""));
 
@@ -199,8 +203,22 @@ function level_up () {
     start_game();
 }
 function win () {
+    console.log("GANASTE")
+    time_player = Date.now() - time_start;
     clearInterval(time_interval);
-    console.log("GANASTE");
+    if (localStorage.getItem("best_Score") == 0) {
+        localStorage.setItem("best_Score", time_player);
+        record_span.innerHTML = time_player;
+        p_result.innerHTML = "PRIMER RECORD ESTABLECIDO"
+    }
+    else if (time_player < localStorage.getItem("best_Score")) {
+        localStorage.setItem("best_Score", time_player);
+        record_span.innerHTML = time_player;
+        p_result.innerHTML = "NUEVO RECORD"
+    }
+    else{
+        p_result.innerHTML = "NO SUPERASTE EL RECORD"
+    }
 }
 function fail () {
     lives--;
@@ -234,4 +252,8 @@ function show_lives () {
 
 function show_time () {
     time_span.innerHTML = Date.now() - time_start;
+}
+
+function show_record () {
+    record_span.innerHTML = localStorage.getItem("best_Score");
 }

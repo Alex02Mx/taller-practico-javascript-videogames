@@ -211,7 +211,7 @@ function win () {
     if (localStorage.getItem("best_Score") == 0) {
         localStorage.setItem("best_Score", time_player);
         record_span.innerHTML = time_player;
-        p_result.innerHTML = "PRIMER RECORD ESTABLECIDO"
+        p_result.innerHTML = "PRIMER RECORD"
     }
     else if (time_player < localStorage.getItem("best_Score")) {
         localStorage.setItem("best_Score", time_player);
@@ -219,7 +219,7 @@ function win () {
         p_result.innerHTML = "NUEVO RECORD"
     }
     else{
-        p_result.innerHTML = "NO SUPERASTE EL RECORD"
+        p_result.innerHTML = "RECORD NO SUPERADO"
     }
     game.clearRect(0,0,canvas_size,canvas_size);
     canvas.style.display ="none";
@@ -274,7 +274,9 @@ function move_player () {
         fail ();
     }
     else {
-        game.fillText(emojis["PLAYER"], player_position.x - res , player_position.y + res);
+        // game.fillText(emojis["PLAYER"], player_position.x - res , player_position.y + res);
+        game.fillText(emojis["PLAYER"], player_position.x, player_position.y);
+    
     }
 };
 function level_up () {
@@ -302,7 +304,8 @@ function fail () {
         // time_start = undefined;
     }
     res = (.10 * element_size);
-    game.fillText(emojis["BOMB_COLLISION"], player_position.x - res , player_position.y + res);
+    // game.fillText(emojis["BOMB_COLLISION"], player_position.x - res , player_position.y + res);
+    game.fillText(emojis["BOMB_COLLISION"], player_position.x, player_position.y);
     setTimeout(() => explosion (), 200 );
 };
 function explosion () {
